@@ -26,6 +26,19 @@ order by contactlastname desc,contactFirstName asc;
 select ordernumber,(quantityordered*priceeach) as ordervalue from orderdetails
 order by ordervalue desc;
 
+#wasq to fecth employeefullname,jobtitle,officecode from the employees table sort the data 
+#first by officecode in asc order then by jobtitle in desc order and then by employeefullname in aplhabetical order?
+select concat(firstname," ",lastname) as employeefullname,jobtitle,officecode from employees
+order by officecode asc,jobtitle desc,employeefullname asc;
 
+#orderby treats null as small value
+use dummy;
+#orderby treats null as desc
+#wasq to fetch employees detail and sort the result set by reportsto in asc order?
+select * from employees order by reportsto asc;
+
+#wasq to fetch ordernumber,orderdate and status and sort the data by orderdate from most recent to outdated?
+select ordernumber,orderdate,status from orders 
+order by orderdate desc;
 
 
