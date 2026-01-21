@@ -179,6 +179,58 @@ where customername like "a%e";
 select customername from customers
 where customername not like "a%" or "e%" or "i%" or "o%" or "u%";
 
+use dummy;
+#LIMIT - row count(returns row count)
+#order of execution
+#from---where---select---distinct----order by---limit
 
+#wasq to fetch customers detail only fetch first 10 records?
+select * from customers limit 10;
+
+#wasq to fetch customername,customernumber and creditlimit from customers only
+#(that returns top 5 highest creditlimit customer)?
+select customername,customernumber,creditlimit from customers
+order by creditlimit desc limit 5;
+
+#offset - starts from zero 0
+select customername,customernumber,creditlimit from customers
+order by creditlimit desc limit 5 offset 0;
+
+#wasq to fetch customername,customernumber and creditlimit from customers only
+#(that returns top 2 highest creditlimit customer)?
+select customername,customernumber,creditlimit from customers
+order by creditlimit desc limit 2 offset 1;
+
+#when we dont mentioned offset it is to be written before limit number 
+#like 4 is offset and 1 is limit
+select customername,customernumber,creditlimit from customers
+order by creditlimit desc limit 4,1;
+
+#wasq to fetch second highest quantityinstock,product from the products table? 
+select quantityinstock,productname from products
+order by quantityinstock desc limit 1,1;
+select quantityinstock,productname from products
+order by quantityinstock desc limit 1 offset 1;
+
+use dummy;
+
+#wasq to fetch customername,customernumber,city,state,country and 
+#creditlimit who belongs to usa,france,japan and have creditlimit more than 50000 and
+#whose customername starts with vowels?
+select customername,customernumber,city,state,country,creditlimit from customers
+where country in ("usa","france","japan") and creditlimit>50000 and 
+(customername like "a%" or customername like"e%" or customername like "i%" or customername like "o%" 
+or "u%");
+
+#wasq to fetch ordernumber,orderdate,status from the orders table only fetch the 
+#orders placed in 2003 and have shipped status,sort the data by orderdate in asc order?
+select ordernumber,orderdate,status from orders
+where orderdate;
+
+#wasq to fetch employeenumber,empname,email,officecode and jobtitle from the employees table 
+#only fetch the records whose firstname starts with consonants and 
+#sort the data by firstname in asc order and then by lastname desc order?
+select employeenumber,concat(firstname," ",lastname)as emp,email,officecode,jobtitle from employees
+where firstname like "b%" order by firstname asc, lastname desc;
 
 
