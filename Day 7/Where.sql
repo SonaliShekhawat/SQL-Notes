@@ -100,5 +100,85 @@ where country in ("usa","france","japan");
 select customername,city,state,country from customers
 where country not in ("usa","france","japan");
 
+#is / is not
+#wasq to fetch employeenumber,employeefullname,jobtitle who does not reports to anyone?
+select employeenumber,concat(firstname," ",lastname) as employeefullname,
+jobtitle from employees
+where reportsto is null;
+
+#wasq to fetch employeenumber,employeefullname,jobtitle who reports to whom?
+select employeenumber,concat(firstname," ",lastname) as employeefullname,
+jobtitle from employees
+where reportsto is not null;
+
+select customername,customernumber,
+state,country from customers
+where state is not null
+order by state desc;
+
+select customername,customernumber,
+state,country from customers
+where state is null
+order by state desc;
+
+# Distinct 
+#does not work on multiple column
+#order of execution
+#from----where----select----distinct----order by
+
+select status from orders;
+select distinct status from orders;
+
+select country from customers;
+select distinct country from customers;
+
+#like operator
+#pattern matching
+# 2 wild card operator
+#1. %
+#2. _ undersccore
+
+#1. #
+#wasq to fetch customername where customername starts with a?
+select customername from customers
+where customername like "a%";
+
+#wasq to fetch customername where customername ends with .?
+select customername from customers
+where customername like "%.";
+
+#wasq to fetch customername where customername starts with a and ends with .?
+select customername from customers
+where customername like "a%.";
+
+#wasq to fetch productname where productname has car in it?
+select productname from products
+where productname like "%car%";
+
+#2. _
+#wasq to fetch fisrtname,lastname where firstname has 3 letters in it?
+select firstname,lastname from employees
+where firstname like "t_m";
+
+#Que-
+#wasq to fetch customername starts with vowels?
+select customername from customers
+where customername like "i%";
+
+#wasq to fetch customername ends with vowels?
+select customername from customers
+where customername like"%o";
+
+#wasq to fetch customername starts with vowels and ends with vowels?
+select customername from customers
+where customername like "a%o";
+select customername from customers
+where customername like "a%e";
+
+#wasq to fetch customer whose name do not start from vowel?
+select customername from customers
+where customername not like "a%" or "e%" or "i%" or "o%" or "u%";
+
+
 
 
