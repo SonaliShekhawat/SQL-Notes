@@ -59,4 +59,3 @@ join orderdetails od on o.ordernumber=od.ordernumber
 group by employeefullname;
 
 
-
