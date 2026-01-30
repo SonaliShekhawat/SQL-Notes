@@ -122,7 +122,6 @@ group by 1,3;
 select ordernumber,sum(quantityordered*priceeach) as totalsales,sum(quantityordered) as itemsold from orderdetails
 group by ordernumber;
 
-#Yaha se
 #Having
 #syntax
 #select columnlist from tablename
