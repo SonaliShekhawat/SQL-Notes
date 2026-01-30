@@ -1,4 +1,4 @@
-#functions
+#Functions
 #aggregate fuction
 #Group_concat
 #wasq to fetch country and their customername(fetch customername in a single row with comma seperated values)?
