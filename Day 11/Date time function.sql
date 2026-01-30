@@ -44,3 +44,4 @@ select hour(now());
 select minute(now());
 select second(now());
 
+
