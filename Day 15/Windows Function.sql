@@ -310,7 +310,49 @@ when diff>30 then "highlight"
 else " "
 end  from cte1;
 
+#LEAD
+#For each order, find the order date and the next order date of the same customer.
+select customername,ordernumber,(orderdate) as current_ordrdate,
+lead(orderdate,1,0) over(partition by customername) as next_ordrdate
+from customers join orders using(customernumber);
 
+#For each customer, show the order value and the next order’s value.
+select customername,(quantityordered*priceeach) as current_ordrvalue,
+lead(quantityordered*priceeach,1,0) over (partition by customername) as next_ordrvalue
+from customers join orders using(customernumber)
+join orderdetails using(ordernumber);
+
+#For each payment, display the payment amount and the next payment amount made by that customer.
+select customername,(amount) as current_paymntamnt,
+lead(amount,1,0) over(partition by customername) as next_paymntamnt
+from customers join payments using(customernumber);
+
+select customername,(quantityordered*priceeach) as current_paymntamnt,
+lead(quantityordered*priceeach,1,0) over(partition by customername) as next_paymntamnt
+from customers join orders using(customernumber)
+join orderdetails using(ordernumber);
+
+#lag
+#For each customer’s order, find the order amount along with the previous order’s amount.
+select customername,ordernumber,(quantityordered*priceeach) as current_ordramnt,
+lag((quantityordered*priceeach),1,0) over(partition by customername order by (quantityordered*priceeach) asc) as prv_ordramnt
+from customers join orders using(customernumber)
+join orderdetails using(ordernumber);
+
+#For each order, show the order date and the previous order date of the same customer.
+select customername,ordernumber,(orderdate) as cureent_ordrdate,
+lag(orderdate,1,0) over (partition by customername order by orderdate asc) as prv_ordrdate
+from customers join orders using(customernumber);
+
+#For each payment, display the payment amount and the previous payment amount made by that customer.
+select customername,(amount) as current_paymntamnt,
+lag(amount,1,0) over(partition by customername) as prv_paymntamnt
+from customers join payments using(customernumber);
+
+select customername,(quantityordered*priceeach) as current_paymntamnt,
+lag(quantityordered*priceeach,1,0) over(partition by customername) as prv_paymntamnt
+from customers join orders using(customernumber)
+join orderdetails using(ordernumber);
 
 
 
