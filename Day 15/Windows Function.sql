@@ -240,7 +240,7 @@ select * from cte where p_rn>=.50;
 
 use dummy;
 #VALUE WINDOW FUNCTION
-#WF(COLUMN,[OFFSET],[IFNOTFOUND-"NULL"] over(partition defn
+#WF(COLUMN,[OFFSET],[IFNOTFOUND-"NULL"]) over(partition defn
 #                                             order defn)
 #LAG is previous
 #LEAD is next
