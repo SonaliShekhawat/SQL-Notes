@@ -3,8 +3,7 @@ CREATE TABLE overtime (
     employee_name VARCHAR(50) NOT NULL,
     department VARCHAR(50) NOT NULL,
     hours INT NOT NULL,
-     PRIMARY KEY (employee_name,department)
-);
+     PRIMARY KEY (employee_name,department));
 INSERT INTO overtime(employee_name, department, hours)
 VALUES('Diane Murphy','Accounting',37),
 ('Mary Patterson','Accounting',74),
