@@ -50,7 +50,7 @@ from overtime;
 
 #FIRST_VALUE and LAST_VALUE
 
-#FIRST_VALUE - Practice Questions
+#FIRST_VALUE -Cryptocurrency Analysis Dashboard Using Power BI Practice Questions
 #For each order, show the order date along with the first purchase date of that customer.
 select customername,ordernumber,orderdate,
 first_value(orderdate) over(partition by customername order by orderdate asc
